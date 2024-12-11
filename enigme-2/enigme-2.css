@@ -1,0 +1,42 @@
+body{
+    background-color: black;
+}
+
+.binaire{
+    color: green;
+    text-align: center;
+}
+
+label{
+    color: white;
+}
+
+#binary-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#response {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    /* Taille initiale */
+    text-align: center;
+    /* Centre le texte */
+    transition: all 0.7s ease;
+    /* Ajoute une transition pour un effet fluide */
+}
+
+#explanation p{
+    color: white;
+    font-size: 20px;
+}
+
+.explications{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
