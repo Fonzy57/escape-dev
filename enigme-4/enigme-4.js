@@ -63,7 +63,7 @@ function draw() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Remplir chaque colonne avec des caractères aléatoires
-    ctx.fillStyle = "#ec6834";  // Couleur des caractères (vert)
+    ctx.fillStyle = "#ec6834";  // Couleur des caractères (OrangeMNS)
     ctx.font = fontSize + "px monospace";
 
     // Dessiner les caractères pour chaque colonne
