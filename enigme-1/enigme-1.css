@@ -1,0 +1,39 @@
+body {
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot-container {
+  overflow: hidden;
+  border: 2px solid grey;
+  height: 95vh;
+  width: 95vw;
+  position: relative;
+  box-shadow: 0 0 20px 0;
+  background-color: blue;
+  cursor: url("loupe.svg"), auto;
+}
+
+.dot {
+  width: 60px;
+  height: 60px;
+  background-color: #111111;
+  border-radius: 50px;
+  margin: auto;
+  transition: 0.1s ease;
+  position: absolute;
+}
+
+.c1 {
+  background-color: red;
+}
+.c2 {
+  background-color: #ec6834;
+}
+.c3 {
+  background-color: #eca834;
+}
