@@ -11,9 +11,7 @@
 
 <body>
     <video id="background-video" autoplay loop muted>
-    
         <source src="background-video.mp4" type="video/mp4">
-    
     </video>
 
     <h2 id="binary-text" class="binaire">01000111 01101111 01110100 01110100 01100110 01110010 01101001 01100101
@@ -42,10 +40,23 @@
                         style="max-width: 300px; margin: 20px 0;">
                 </div>
                 <div id="explanation" style="display: none;">
-                    <p>Le système de numération binaire moderne, base du code binaire, a été développé par Gottfried Leibniz sur une période qui s'étend environ entre 1678 et 1703, date où paraît son article "Explication de l'Arithmétique Binaire".</p>
+                    <p>Le système de numération binaire moderne, base du code binaire, a été développé par Gottfried
+                        Leibniz sur une période qui s'étend environ entre 1678 et 1703, date où paraît son article
+                        "Explication de l'Arithmétique Binaire".</p>
                 </div>
             </div>
         </section>
+
+        <!-- Conteneur pour les boutons d'indices -->
+        <div id="hints-container">
+            <button id="hint1">Indice 1</button>
+            <button id="hint2">Indice 2</button>
+            <button id="hint3">Indice 3</button>
+        </div>
+
+        <!-- Bouton de redirection (initialement caché) -->
+        <button id="redirect-button" style="display: none;">Accéder à la page suivante</button>
+
     </main>
 
     <script>
@@ -60,6 +71,22 @@
         const explanationDiv = document.getElementById("explanation");
         const binaryText = document.getElementById("binary-text");
 
+        // Conteneur des indices
+        const hintsContainer = document.getElementById("hints-container");
+        const hint1Button = document.getElementById("hint1");
+        const hint2Button = document.getElementById("hint2");
+        const hint3Button = document.getElementById("hint3");
+
+        // Bouton de redirection
+        const redirectButton = document.getElementById("redirect-button");
+
+        // Messages d'indice
+        const hints = [
+            "Indice 1 : Un nombre rempli de 0 et de 1 rappelle forcément un nombre binaire.",
+            "Indice 2 : Un nombre binaire peut être traduit en texte.",
+            "Indice 3 : Pour traduire le nombre binaire, vous pouvez vous rendre à cette adresse : https://usefulwebtool.com/fr/convertir-texte-en-binaire"
+        ];
+
         // Événement de soumission du formulaire
         form.addEventListener("submit", function (event) {
             event.preventDefault(); // Empêche le rechargement de la page
@@ -68,8 +95,8 @@
 
             if (userAnswer === correctAnswer) {
                 // Réponse correcte
-                responseDiv.textContent = "Infiltration du système principal réussie. Veuillez-vous rendre sur cette adresse :";
-                responseDiv.style.color = "greenyellow";
+                responseDiv.textContent = "Infiltration du système principal réussie.";
+                responseDiv.style.color = "green";
                 responseDiv.style.fontSize = "35px"; // Agrandit le texte
 
                 // Masque le formulaire et le texte binaire
@@ -80,6 +107,11 @@
                 imageDiv.style.display = "block"; // Rend la div visible
                 explanationDiv.style.display = "block"; // Rend le texte explicatif visible
 
+                // Affiche le bouton de redirection
+                redirectButton.style.display = "block"; // Affiche le bouton de redirection
+
+                // Cache les boutons d'indice
+                hintsContainer.style.display = "none"; // Cache le conteneur des indices
             } else {
                 // Réponse incorrecte
                 responseDiv.textContent = "Mauvaise réponse. Infiltration du système principal échouée.";
@@ -91,6 +123,25 @@
                 explanationDiv.style.display = "none"; // Cache le texte explicatif
             }
         });
+
+        // Afficher un indice lorsqu'un bouton est cliqué
+        hint1Button.addEventListener("click", function () {
+            alert(hints[0]);
+        });
+
+        hint2Button.addEventListener("click", function () {
+            alert(hints[1]);
+        });
+
+        hint3Button.addEventListener("click", function () {
+            alert(hints[2]);
+        });
+
+        // Ajouter la redirection du bouton
+        redirectButton.addEventListener("click", function () {
+            window.location.href = "http://example.com";  // Remplace par l'URL de la page de redirection
+        });
+
     </script>
 </body>
 
