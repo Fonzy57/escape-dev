@@ -1,9 +1,8 @@
 //  DEFINIT LE NOMBRE DE POINT ------------------------------
-function DotGen () {
+function DotGen() {
   const Dot = document.createElement("span");
   ran = Math.floor(Math.random() * 3) + 1;
   Dot.classList.add("dot");
-
   Dot.classList.add(`c${ran}`);
   document.querySelector(".dot-container").appendChild(Dot);
 }
@@ -19,32 +18,30 @@ for (DotNumbY = 0; DotNumbY < dotNumbYcap; DotNumbY++) {
 }
 
 // DEFINIT LE RESPONSIVE DES POINTS ----------------------------------------
-// setInterval(() => {
-//   LastDot = document.body.lastElementChild;
-//   if (DotNumbX < dotNumbXcap) {
-//     DotGen();
-//     DotNumb++;
-//   }
-//   if (DotNumbY > dotNumbYcap) {
-//     document.body.removeChild(LastDot);
-//     DotNumb--;
-//   }
-// }, 1);
+setInterval(() => {
+  LastDot = document.body.lastElementChild;
+  if (DotNumbX < dotNumbXcap) {
+    DotGen();
+    DotNumb++;
+  }
+  if (DotNumbY > dotNumbYcap) {
+    document.body.removeChild(LastDot);
+    DotNumb--;
+  }
+}, 1000);
 
 // DEFINIT LA POSITION DE CHAQUE POINTS ---------------------------------------
 const DotContainer = document.body;
 const Dots = DotContainer.querySelectorAll(".dot");
 
-DotContainer.addEventListener("mousemove", () => { });
-
 dotDistX = window.innerWidth / dotNumbXcap;
 dotDistY = window.innerHeight / dotNumbYcap;
 NumberY = 0;
-NumberX = -1;
+NumberX = 0;
 Dots.forEach((dot) => {
   if (NumberX <= dotNumbXcap) {
     dotPosX = dotDistX * NumberX;
-    dot.style.left = `${dotPosX + 20}px`;
+    dot.style.left = `${dotPosX - 15}px`;
     NumberX++;
   }
   if (NumberX == dotNumbXcap) {
@@ -53,7 +50,7 @@ Dots.forEach((dot) => {
   }
   if (NumberY <= dotNumbYcap) {
     dotPosY = dotDistY * NumberY;
-    dot.style.top = `${dotPosY + 15}px`;
+    dot.style.top = `${dotPosY - 15}px`;
   }
   if (NumberY == dotNumbYcap) {
     NumberY = dotNumbYcap;
@@ -72,14 +69,14 @@ DotContainer.addEventListener("mousemove", (e) => {
   if (!animationFrameId) {
     animationFrameId = requestAnimationFrame(() => {
       Dots.forEach((dot) => {
-        const dotPosLocX = dot.getBoundingClientRect().x - 20;
-        const dotPosLocY = dot.getBoundingClientRect().y - 20;
+        const dotPosLocX = dot.getBoundingClientRect().x - 5;
+        const dotPosLocY = dot.getBoundingClientRect().y - 5;
         const deltaX = mouseX - dotPosLocX;
         const deltaY = mouseY - dotPosLocY;
 
         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
         // ON MODIFIE ICI LA LARGEUR DU HALO DE POINTS
-        const maxDistance = 70;
+        const maxDistance = 60;
 
         if (distance < maxDistance) {
           const moveX = (deltaX / distance) * (maxDistance - distance);
@@ -95,3 +92,9 @@ DotContainer.addEventListener("mousemove", (e) => {
     animationFrameId = null;
   }
 });
+
+// LOGIQUE DE REVEAL DES MOTS ------------------------------------------
+
+const piscineMot1 = document.getElementById("piscine-mot1");
+const piscineMot2 = document.getElementById("piscine-mot2");
+const piscineMot3 = document.getElementById("piscine-mot3");

@@ -1,3 +1,27 @@
+.enigme-1 {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.enigme-1 h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.reveal {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.reaveal.inactive {
+  background-color: transparent;
+  min-width: 100px;
+  display: inline-block;
+}
+
+.reaveal.active {
+  background-color: transparent;
+}
+
 .body-enigme-1 {
   overflow: hidden;
   margin: 0;
@@ -8,19 +32,20 @@
 }
 
 .dot-container {
+  position: relative;
   overflow: hidden;
   border: 2px solid grey;
   height: 95vh;
   width: 95vw;
   position: relative;
   box-shadow: 0 0 20px 0;
-  background-color: blue;
+  background-color: #313d73;
   cursor: url("loupe.svg"), auto;
 }
 
 .dot {
-  width: 60px;
-  height: 60px;
+  width: 67px;
+  height: 67px;
   background-color: #111111;
   border-radius: 50px;
   margin: auto;
@@ -36,4 +61,24 @@
 }
 .c3 {
   background-color: #eca834;
+}
+
+.piscine-mot {
+  font-size: 10em;
+  color: white;
+}
+
+#piscine-mot1 {
+  position: absolute;
+  top: 50%;
+}
+#piscine-mot2 {
+  position: absolute;
+  top: 25%;
+  left: 60%;
+}
+#piscine-mot3 {
+  position: absolute;
+  top: 60%;
+  left: 60%;
 }
