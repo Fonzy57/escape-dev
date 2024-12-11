@@ -3,7 +3,7 @@ body{
 }
 
 .binaire{
-    color: green;
+    color: white;
     text-align: center;
 }
 
@@ -39,4 +39,40 @@ label{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/* Style pour la vidéo d'arrière-plan */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    /* Légère transparence */
+    z-index: -1;
+    /* Place la vidéo en arrière-plan */
+    pointer-events: none;
+    /* Désactive les interactions avec la vidéo */
+}
+
+/* Style pour le contenu par-dessus la vidéo */
+body {
+    position: relative;
+    z-index: 1;
+    /* Place le contenu au-dessus de la vidéo */
+    color: white;
+    /* Couleur du texte pour une meilleure lisibilité */
+    font-family: Arial, sans-serif;
+    /* Style général du texte */
+}
+
+.binaire,
+#contact {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fond semi-transparent pour contraster avec la vidéo */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
 }
