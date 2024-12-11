@@ -28,10 +28,16 @@ document.getElementById("enigme-form2").addEventListener("submit", function (eve
     const correctAnswer = "57"; // La somme des nombres de 1 à 11 sauf 9
 
     const resultDiv = document.getElementById("enigme-form2").nextElementSibling;
+    const nextDiv = document.getElementById("next-step");
 
     if (userAnswer === correctAnswer) {
         resultDiv.style.color = "green";
         resultDiv.textContent = "Correct ! La réponse est '57'.";
+        const nextButton = nextDiv.appendChild(document.createElement("button"));
+        nextButton.textContent = "Passer à la suite";
+        nextButton.addEventListener("onclick", function (event) {
+            window.location.href = "/enigme-4"
+        })
     } else {
         resultDiv.style.color = "red";
         resultDiv.textContent = "Faux ! Réessayez.";

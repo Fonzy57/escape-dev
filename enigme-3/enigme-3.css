@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-image: url(img/bleu.avif);
     color: #333;
+    padding-bottom: 80px;
 }
 
 #container1,
@@ -77,4 +78,9 @@ button:hover {
 
 .container2Enabled {
     opacity: 1;
+}
+
+#next-step {
+    width: max-content;
+    margin: 10px auto;
 }
