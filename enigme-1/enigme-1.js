@@ -1,9 +1,8 @@
 //  DEFINIT LE NOMBRE DE POINT ------------------------------
-function DotGen() {
+function DotGen () {
   const Dot = document.createElement("span");
   ran = Math.floor(Math.random() * 3) + 1;
   Dot.classList.add("dot");
-  console.log(ran);
 
   Dot.classList.add(`c${ran}`);
   document.querySelector(".dot-container").appendChild(Dot);
@@ -36,7 +35,7 @@ for (DotNumbY = 0; DotNumbY < dotNumbYcap; DotNumbY++) {
 const DotContainer = document.body;
 const Dots = DotContainer.querySelectorAll(".dot");
 
-DotContainer.addEventListener("mousemove", () => {});
+DotContainer.addEventListener("mousemove", () => { });
 
 dotDistX = window.innerWidth / dotNumbXcap;
 dotDistY = window.innerHeight / dotNumbYcap;
