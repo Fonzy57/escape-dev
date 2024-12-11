@@ -76,3 +76,64 @@ body {
     border-radius: 10px;
     text-align: center;
 }
+
+#hints-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#hints-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#hints-container button:hover {
+    background-color: #0056b3;
+}
+
+#redirect-button {
+    background-color: #4CAF50;
+    /* Couleur de fond verte */
+    color: white;
+    /* Texte en blanc */
+    padding: 15px 32px;
+    /* Espacement interne */
+    font-size: 18px;
+    /* Taille du texte */
+    border: none;
+    /* Retirer les bordures par défaut */
+    border-radius: 5px;
+    /* Bordures arrondies */
+    cursor: pointer;
+    /* Pointeur lors du survol */
+    display: block;
+    /* Comportement en bloc */
+    margin-top: 20px;
+    /* Un peu d'espace au-dessus */
+    margin-left: auto;
+    /* Centrer horizontalement */
+    margin-right: auto;
+    /* Centrer horizontalement */
+}
+
+/* Style lorsque la réponse est correcte */
+#response.correct+#redirect-button {
+    display: block;
+    /* Afficher le bouton */
+}
+
+/* Cacher le bouton de redirection par défaut */
+#redirect-button {
+    display: none;
+    /* Initialement masqué */
+}
