@@ -5,12 +5,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="enigme-4.css">
-  <script src="enigme-4.js"></script>
   <title>ENIGME 4</title>
 </head>
 
 <body>
-  <h1>ENIGME 4</h1>
+ <!-- Canvas pour le fond -->
+ <canvas id="canvas"></canvas>
+
+ <!-- Contenu principal -->
+ <div class="container">
+     <h1>Dans la matrice</h1>
+     <p>Un message codé vous attend : <strong id="text-chiffre">Znoy ny zu xojs!</strong></p>
+
+     <label for="cle">Essayez une clé :</label>
+     <input type="number" id="cle" placeholder="Entrez une clé" min="0" max="25">
+
+     <button id="btn-dechiffrer">Déchiffrer</button>
+
+     <p><strong>Message déchiffré :</strong> <span id="text-dechiffre">...</span></p>
+ </div>
+
+ <script src="script.js" defer></script>
+</div>
+
+<script src="enigme-4.js"></script>
 
 </body>
 

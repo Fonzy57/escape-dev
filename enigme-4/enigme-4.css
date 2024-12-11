@@ -1,0 +1,22 @@
+/* Styles pour les éléments <canvas> */
+canvas {
+    position: fixed; /* Fixe le canvas à l'écran */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Largeur complète de la fenêtre */
+    height: 100vh; /* Hauteur complète de la fenêtre */
+    z-index: -1; /* Derrière tout le contenu */
+    background-color: black; /* Fond noir */
+}
+
+/* Contenu principal */
+.container {
+    position: relative; /* Positionnement au-dessus du canvas */
+    z-index: 1; /* Au-dessus du canvas */
+    background: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 50px auto;
+    width: 50%;
+    text-align: center;
+}
