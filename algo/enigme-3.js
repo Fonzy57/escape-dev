@@ -2,7 +2,7 @@ document.getElementById("enigme-form1").addEventListener("submit", function (eve
     event.preventDefault(); // Empêche la soumission du formulaire
 
     const userAnswer = document.getElementById("answer1").value.trim().toLowerCase();
-    const correctAnswer = "mineur";
+    const correctAnswer = "ia off";
 
     const resultDiv = document.getElementById("result");
 
@@ -27,18 +27,16 @@ document.getElementById("enigme-form1").addEventListener("submit", function (eve
 });
 
 
-
-
 document.getElementById("enigme-form2").addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche la soumission du formulaire
 
-    const userAnswer = document.getElementById("answer2").value;
-    const correctAnswer = "57"; // La somme des nombres de 1 à 11 sauf 9
+    const userAnswer = document.getElementById("answer2").value.trim().toLowerCase();
+    const correctAnswer = "infini = vrai"; // La somme des nombres de 1 à 11 sauf 9
 
     const resultDiv = document.getElementById("result2");
 
     if (userAnswer === correctAnswer) {
-        resultDiv.textContent = ""
+        resultDiv.textContent = "";
 
         // Affiche le bouton "Passer à l'étape suivante"
         const goNextButton = document.getElementById("goNext");
@@ -55,7 +53,6 @@ document.getElementById("enigme-form2").addEventListener("submit", function (eve
     }
 });
 
-function goNext() {
-    window.location.href = "/enigme-4"; // Redirige vers l'énigme suivante
+function goNext () {
+    window.location.href = "../the-end/index.html"; // Redirige vers l'énigme suivante
 }
-
