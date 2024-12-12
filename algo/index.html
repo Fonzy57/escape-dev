@@ -9,6 +9,10 @@
 </head>
 
 <body>
+  <video id="background-video" autoplay loop muted>
+    <source src="img/hack.mp4" type="video/mp4">
+  </video>
+  <canvas id="c"></canvas>
   <div id="container1">
     <h1>Énigme d'algorithmie 1</h1>
     <p>
@@ -49,10 +53,11 @@
       <button type="submit" id="button2">Vérifier</button>
     </form>
     <div id="result2"></div>
-    <button onclick="goNext()" id="goNext">Passer à l'étape suivante</button>
+    <a href="../the-end/index.html">
+      <button onclick="goNext()" id="goNext">Passer à l'étape suivante</button>
+    </a>
   </div>
   <script src="enigme-3.js"></script>
-  <script src="../js/VIRUS.js"></script>
 </body>
 
 </html>
