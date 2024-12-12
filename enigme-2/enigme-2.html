@@ -51,7 +51,11 @@
         </div>
 
         <!-- Bouton de redirection (initialement caché) -->
-        <button id="redirect-button" style="display: none;">Accéder à la page suivante</button>
+        <a href="../enigme-1/enigme-1.html">
+            <button id="redirect-button" style="display: none;">
+                Accéder à la page suivante
+            </button>
+        </a>
 
     </main>
 
@@ -79,7 +83,7 @@
         let index = 0;
 
         // Fonction pour afficher le texte binaire progressivement
-        function typeBinaryText() {
+        function typeBinaryText () {
             if (index < binaryText.length) {
                 binaryTextElement.textContent += binaryText[index]; // Ajouter caractère par caractère
                 index++;
@@ -122,7 +126,7 @@
         ];
 
         // Fonction pour activer un bouton après un délai
-        function enableHintButton(button, hintMessage, delay) {
+        function enableHintButton (button, hintMessage, delay) {
             setTimeout(() => {
                 button.disabled = false;
                 button.style.backgroundColor = "#007BFF"; // Couleur normale
@@ -139,7 +143,7 @@
         enableHintButton(hint3Button, hints[2], 4 * 60 * 1000); // 8 minutes
 
         // Fonction pour secouer le conteneur en cas de mauvaise réponse
-        function shakeContainer() {
+        function shakeContainer () {
             const container = document.getElementById("contact");
             container.classList.add("shake");
             setTimeout(() => {
