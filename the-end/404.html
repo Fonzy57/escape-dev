@@ -40,7 +40,8 @@
         }
 
         #homeButton {
-            display: none; /* Caché au départ */
+            display: none;
+            /* Caché au départ */
             margin-top: 30px;
             padding: 10px 20px;
             font-size: 1.2rem;
@@ -56,7 +57,6 @@
             background-color: black;
             color: white;
         }
-
     </style>
 </head>
 
@@ -75,7 +75,7 @@
         const textContainer = document.getElementById("additional-text");
 
         // Fonction pour afficher le texte caractère par caractère
-        function displayText() {
+        function displayText () {
             let index = 0;
             const interval = setInterval(() => {
                 textContainer.textContent += additionalText[index];
@@ -90,13 +90,13 @@
 
 
         // Fonction pour afficher le bouton Accueil
-        function showHomeButton() {
+        function showHomeButton () {
             homeButton.style.display = "block";
         }
 
         // Redirection vers la page d'accueil
-        function redirectToHome() {
-            window.location.href = "index.html"; // Remplacez par l'URL de votre page d'accueil
+        function redirectToHome () {
+            window.location.href = "../index.html"; // Remplacez par l'URL de votre page d'accueil
         }
 
         // Attendre 5 secondes avant de commencer à afficher le texte
