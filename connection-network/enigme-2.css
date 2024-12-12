@@ -11,6 +11,13 @@ label {
   color: white;
 }
 
+#nav-connection-next {
+  text-decoration: none;
+  width: max-content;
+  display: flex;
+  margin: 0px auto;
+}
+
 #binary-form {
   display: flex;
   flex-direction: column;
