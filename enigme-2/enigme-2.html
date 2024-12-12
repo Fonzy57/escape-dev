@@ -7,6 +7,15 @@
     <meta name="description" content="Description de votre site web">
     <title>Verrouillage du système principal</title>
     <link rel="stylesheet" href="engime-2.css">
+    <style>
+        /* Styles pour boutons d'indices désactivés */
+        #hints-container button:disabled {
+            background-color: #888;
+            /* Couleur grise */
+            cursor: not-allowed;
+            /* Curseur désactivé */
+        }
+    </style>
 </head>
 
 <body>
@@ -49,9 +58,9 @@
 
         <!-- Conteneur pour les boutons d'indices -->
         <div id="hints-container">
-            <button id="hint1">Indice 1</button>
-            <button id="hint2">Indice 2</button>
-            <button id="hint3">Indice 3</button>
+            <button id="hint1" disabled>Indice 1</button>
+            <button id="hint2" disabled>Indice 2</button>
+            <button id="hint3" disabled>Indice 3</button>
         </div>
 
         <!-- Bouton de redirection (initialement caché) -->
@@ -71,11 +80,19 @@
         const explanationDiv = document.getElementById("explanation");
         const binaryText = document.getElementById("binary-text");
 
+        // Permettre l'envoi avec la touche "Entrée" dans le textarea
+            messageField.addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Empêche l'ajout d'un saut de ligne
+                    form.dispatchEvent(new Event("submit")); // Déclenche la soumission du formulaire
+                }
+            });
+
         // Conteneur des indices
-        const hintsContainer = document.getElementById("hints-container");
         const hint1Button = document.getElementById("hint1");
         const hint2Button = document.getElementById("hint2");
         const hint3Button = document.getElementById("hint3");
+        const hintsContainer = document.getElementById("hints-container");
 
         // Bouton de redirection
         const redirectButton = document.getElementById("redirect-button");
@@ -86,6 +103,23 @@
             "Indice 2 : Un nombre binaire peut être traduit en texte.",
             "Indice 3 : Pour traduire le nombre binaire, vous pouvez vous rendre à cette adresse : https://usefulwebtool.com/fr/convertir-texte-en-binaire"
         ];
+
+        // Fonction pour activer un bouton après un délai
+        function enableHintButton(button, hintMessage, delay) {
+            setTimeout(() => {
+                button.disabled = false;
+                button.style.backgroundColor = "#007BFF"; // Couleur normale
+                button.style.cursor = "pointer";
+                button.addEventListener("click", function () {
+                    alert(hintMessage);
+                });
+            }, delay);
+        }
+
+        // Activer les boutons avec un délai spécifique
+        enableHintButton(hint1Button, hints[0], 3 * 60 * 1000); // 3 minutes
+        enableHintButton(hint2Button, hints[1], 6 * 60 * 1000); // 6 minutes
+        enableHintButton(hint3Button, hints[2], 8 * 60 * 1000); // 8 minutes
 
         // Événement de soumission du formulaire
         form.addEventListener("submit", function (event) {
@@ -110,8 +144,8 @@
                 // Affiche le bouton de redirection
                 redirectButton.style.display = "block"; // Affiche le bouton de redirection
 
-                // Cache les boutons d'indice
-                hintsContainer.style.display = "none"; // Cache le conteneur des indices
+                // Cache les boutons d'indices
+                hintsContainer.style.display = "none"; // Cache les boutons d'indices
             } else {
                 // Réponse incorrecte
                 responseDiv.textContent = "Mauvaise réponse. Infiltration du système principal échouée.";
@@ -123,25 +157,6 @@
                 explanationDiv.style.display = "none"; // Cache le texte explicatif
             }
         });
-
-        // Afficher un indice lorsqu'un bouton est cliqué
-        hint1Button.addEventListener("click", function () {
-            alert(hints[0]);
-        });
-
-        hint2Button.addEventListener("click", function () {
-            alert(hints[1]);
-        });
-
-        hint3Button.addEventListener("click", function () {
-            alert(hints[2]);
-        });
-
-        // Ajouter la redirection du bouton
-        redirectButton.addEventListener("click", function () {
-            window.location.href = "http://example.com";  // Remplace par l'URL de la page de redirection
-        });
-
     </script>
 </body>
 
