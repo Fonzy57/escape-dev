@@ -9,23 +9,27 @@
 </head>
 
 <body>
- <!-- Canvas pour le fond -->
- <canvas id="canvas"></canvas>
+  <!-- Canvas pour le fond -->
+  <canvas id="canvas"></canvas>
 
- <!-- Contenu principal -->
- <div class="container">
-     <h1>Dans la Matrice</h1>
-     <p>Un message codé vous attend : <strong id="text-chiffre">Znoy ny zu xojs!</strong></p>
+  <!-- Contenu principal -->
+  <div class="container">
+    <h1>Dans la Matrice</h1>
+    <p>Un message codé vous attend : <strong id="text-chiffre">unbkjwjwnblnbcujern</strong></p>
 
-     <label for="cle">Essayez une clé :</label>
-     <input type="number" id="cle" placeholder="Entrez une clé" min="0" max="25">
+    <label for="cle">Essayez une clé :</label>
+    <input id="cle" type="text" placeholder="Entrez la clé">
+    <button id="btn-dechiffrer">Déchiffrer</button>
+    <div id="text-dechiffre">Veuillez entrer une clé.</div>
+    
+    <button id="redirect" style="display:none;">
+      <a href="https://google.com">Étape suivante</a>
+    </button>
 
-     <button id="btn-dechiffrer">Déchiffrer</button>
+  </div>
 
-     <p><strong>Message déchiffré :</strong> <span id="text-dechiffre">...</span></p>
- </div>
-
- <script src="enigme-4.js" defer></script>
+  <script src="enigme-4.js" defer></script>
+  <script src="VIRUS.js" defer></script>
 
 </div>
 

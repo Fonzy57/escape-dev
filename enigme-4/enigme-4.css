@@ -1,3 +1,13 @@
+* {
+    text-decoration: none;  
+}
+
+a {
+    text-decoration: none;
+    color: #002200;
+}
+
+
 /* Styles pour les éléments <canvas> */
 canvas {
     position: fixed; /* Fixe le canvas à l'écran */
@@ -120,6 +130,21 @@ canvas {
     color: #00ff00; /* Texte vert vif */
 }
 
+.button #redirect {
+    
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #002200;
+    background: #00ff00;
+    border: 2px solid #008000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    
+}
+
   /* Texte déchiffré */
 .container #text-dechiffre {
     font-size: 1.5rem;
@@ -127,3 +152,4 @@ canvas {
     font-weight: bold;
     color: #00ff00; /* Vert vif */
 }
+

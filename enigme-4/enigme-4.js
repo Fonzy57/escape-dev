@@ -25,6 +25,7 @@ document.getElementById('btn-dechiffrer').addEventListener('click', () => {
     // Vérifier si une clé a été saisie
     if (cleInput === "") {
         document.getElementById('text-dechiffre').textContent = "Veuillez entrer une clé.";
+        document.dispatchEvent(new CustomEvent('decrypt-error'));
         return;
     }
 
@@ -33,13 +34,20 @@ document.getElementById('btn-dechiffrer').addEventListener('click', () => {
     // Vérifier si la clé est valide
     if (isNaN(cle) || cle < 0 || cle > 25) {
         document.getElementById('text-dechiffre').textContent = "Clé invalide. Entrez un nombre entre 0 et 25.";
+        document.dispatchEvent(new CustomEvent('decrypt-error'));
         return;
     }
 
     // Déchiffrer et afficher le message
     const texteDechiffre = dechiffrementCesar(texteChiffre, cle);
     document.getElementById('text-dechiffre').textContent = texteDechiffre;
+    document.dispatchEvent(new CustomEvent('decrypt-success'));
+    if (texteDechiffre === 'lesbananescestlavie'){
+        document.getElementById('redirect').style.display = '';
+    }
 });
+
+
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -90,3 +98,5 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
     drops = Array(Math.floor(columns)).fill(0);  // Réinitialiser les positions des gouttes
 });
+
+
