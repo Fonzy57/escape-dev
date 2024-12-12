@@ -1,4 +1,3 @@
-
 document.getElementById("enigme-form1").addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche la soumission du formulaire
 
@@ -10,11 +9,9 @@ document.getElementById("enigme-form1").addEventListener("submit", function (eve
     if (userAnswer === correctAnswer) {
         resultDiv.style.color = "green";
         resultDiv.textContent = "Correct ! La réponse est 'Mineur'";
-        document.getElementById("container2").classList.remove('container2Disabled');
-        document.getElementById("container2").classList.add('container2Enabled');
-        document.getElementById("button2").disabled = false;
-        document.getElementById("answer2").disabled = false;
-
+        document.getElementById("container1").style.display = "none";
+        document.getElementById("container2").style.display = "block";
+        document.getElementById("answer2").focus();
     } else {
         resultDiv.style.color = "red";
         resultDiv.textContent = "Faux ! Réessayez.";
@@ -27,21 +24,26 @@ document.getElementById("enigme-form2").addEventListener("submit", function (eve
     const userAnswer = document.getElementById("answer2").value;
     const correctAnswer = "57"; // La somme des nombres de 1 à 11 sauf 9
 
-    const resultDiv = document.getElementById("enigme-form2").nextElementSibling;
-    const nextDiv = document.getElementById("next-step");
+    const resultDiv = document.getElementById("result2");
 
     if (userAnswer === correctAnswer) {
-        resultDiv.style.color = "green";
-        resultDiv.textContent = "Correct ! La réponse est '57'.";
-        const nextButton = nextDiv.appendChild(document.createElement("button"));
-        nextButton.textContent = "Passer à la suite";
-        nextButton.addEventListener("onclick", function (event) {
-            window.location.href = "/enigme-4"
-        })
+        resultDiv.textContent = ""
+
+        // Affiche le bouton "Passer à l'étape suivante"
+        const goNextButton = document.getElementById("goNext");
+        goNextButton.style.display = "block";
+
+        // Désactive le bouton et l'entrée de la 2ème énigme
+        const button2 = document.getElementById("button2");
+        button2.disabled = true;
+        button2.style.cursor = "default";
+        document.getElementById("answer2").disabled = true;
     } else {
         resultDiv.style.color = "red";
         resultDiv.textContent = "Faux ! Réessayez.";
     }
 });
 
-// }
+function goNext() {
+    window.location.href = "/enigme-4"; // Redirige vers l'énigme suivante
+}
