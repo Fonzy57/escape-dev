@@ -10,7 +10,7 @@ const columns = canvas.width / fontSize;
 
 const drops = Array(Math.floor(columns)).fill(1);
 
-function drawMatrix() {
+function drawMatrix () {
   ctx.fillStyle = "rgba(10, 10, 26, 0.4)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -30,7 +30,7 @@ function drawMatrix() {
   }
 }
 
-function animateMatrix() {
+function animateMatrix () {
   drawMatrix();
   requestAnimationFrame(animateMatrix);
 }
@@ -107,7 +107,7 @@ const questions = [
     correctAnswer: "https://chocolateriemns.fr/chocolat/",
   },
   {
-    question: "QU'EST-CE Q'UN RÉSEAU 'LAN' ?",
+    question: "QU'EST-CE QUI EST TRADUIT EN ADRESSE IP PAR UN SERVEUR DNS ?",
     options: ["Adresse IP", "DNS", "Nom de domaine", "Serveur primaire"],
     correctAnswer: "Nom de domaine",
   },
@@ -153,14 +153,14 @@ let timerInterval;
 startButton.addEventListener("click", startQuiz);
 animateMatrix();
 
-function startQuiz() {
+function startQuiz () {
   introScreen.style.display = "none";
   quizScreen.style.display = "block";
   startTimer();
   displayQuestion();
 }
 
-function startTimer() {
+function startTimer () {
   timerInterval = setInterval(() => {
     timeLeft--;
     timerElement.textContent = `TEMPS RESTANT : ${timeLeft} SECONDES`;
@@ -171,7 +171,7 @@ function startTimer() {
   }, 1000);
 }
 
-function displayQuestion() {
+function displayQuestion () {
   const currentQuestion = questions[currentQuestionIndex];
   currentQuestionElement.textContent = currentQuestion.question;
 
@@ -185,7 +185,7 @@ function displayQuestion() {
   });
 }
 
-function checkAnswer(selectedOption) {
+function checkAnswer (selectedOption) {
   const currentQuestion = questions[currentQuestionIndex];
 
   if (selectedOption === currentQuestion.correctAnswer) {
@@ -204,7 +204,7 @@ function checkAnswer(selectedOption) {
   }
 }
 
-function endQuiz() {
+function endQuiz () {
   clearInterval(timerInterval);
 
   // Calcul du pourcentage de réponses correctes
@@ -220,8 +220,7 @@ function endQuiz() {
     successScreen.style.display = "block";
     document.getElementById(
       "final-score"
-    ).textContent = `SCORE FINAL : ${correctAnswers}/${
-      questions.length
+    ).textContent = `SCORE FINAL : ${correctAnswers}/${questions.length
     } (${successPercentage.toFixed(0)}%)`;
   } else {
     // Écran d'échec
@@ -229,8 +228,7 @@ function endQuiz() {
     failureScreen.style.display = "block";
     document.getElementById(
       "failure-score"
-    ).textContent = `SCORE : ${correctAnswers}/${
-      questions.length
+    ).textContent = `SCORE : ${correctAnswers}/${questions.length
     } (${successPercentage.toFixed(0)}%)`;
   }
 }

@@ -27,7 +27,7 @@ document.getElementById("enigme-form2").addEventListener("submit", function (eve
     const resultDiv = document.getElementById("result2");
 
     if (userAnswer === correctAnswer) {
-        resultDiv.textContent = ""
+        resultDiv.textContent = "";
 
         // Affiche le bouton "Passer à l'étape suivante"
         const goNextButton = document.getElementById("goNext");
@@ -44,6 +44,6 @@ document.getElementById("enigme-form2").addEventListener("submit", function (eve
     }
 });
 
-function goNext() {
-    window.location.href = "/enigme-4"; // Redirige vers l'énigme suivante
+function goNext () {
+    window.location.href = "../the-end/index.html"; // Redirige vers l'énigme suivante
 }
