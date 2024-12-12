@@ -15,44 +15,42 @@
       Voici l'algorithme :
     </p>
     <pre class="code-block">
-age = 16
+      age = 16
 
-si age < 18
-alors
-    statut = "Mineur"
-sinon
-    statut = "Majeur"
-        </pre>
+      si age < 18
+      alors
+          statut = "Mineur"
+      sinon
+          statut = "Majeur"
+    </pre>
     <p>À la fin de l'exécution, quelle est la valeur de <strong>statut</strong> ?</p>
     <form id="enigme-form1">
       <label for="answer1">Votre réponse :</label>
-      <input type="text" id="answer1" required>
+      <input type="text" id="answer1" required autofocus>
       <button type="submit">Vérifier</button>
     </form>
     <div id="result"></div>
   </div>
   <div id="container2" class="container2Disabled">
     <h1>Énigme d'algorithmie 2</h1>
-    <p>
-      Voici l'algorithme :
-    </p>
+    <p>Voici l'algorithme :</p>
     <pre class="code-block">
-cumul = 0
-
-Pour i alllant de 1 à 11 (inclus)
-    si i ≠ 9 
-    alors
-        cumul = cumul + i
-            </pre>
+          cumul = 0
+    
+          Pour i allant de 1 à 11 (inclus)
+              si i ≠ 9 
+              alors
+                  cumul = cumul + i
+        </pre>
     <p>À la fin de l'exécution, quelle est la valeur de <strong>cumul</strong> ?</p>
     <form id="enigme-form2">
       <label for="answer2">Votre réponse :</label>
-      <input type="number" id="answer2" required disabled>
-      <button type="submit" id="button2" disabled>Vérifier</button>
+      <input type="number" id="answer2" required>
+      <button type="submit" id="button2">Vérifier</button>
     </form>
-    <div id="result"></div>
+    <div id="result2"></div>
+    <button onclick="goNext()" id="goNext">Passer à l'étape suivante</button>
   </div>
-  <div id="next-step"></div>
   <script src="enigme-3.js"></script>
 </body>
 
