@@ -169,7 +169,7 @@ function initializeEscapeGameBot () {
   const chatContainer = document.createElement('div');
   chatContainer.id = 'escape-game-console';
   chatContainer.style.position = 'fixed';
-  chatContainer.style.bottom = '20px';
+  chatContainer.style.bottom = '55px'; /* TODO */
   chatContainer.style.right = '20px';
   chatContainer.style.width = '250px';
   chatContainer.style.backgroundColor = 'black';
@@ -182,7 +182,8 @@ function initializeEscapeGameBot () {
   chatContainer.style.overflowY = 'auto';
 
   const consoleHeader = document.createElement('div');
-  consoleHeader.textContent = '> SYSTÈME DE COMMUNICATION';
+  consoleHeader.textContent = '> V.I.R.U.S.';
+  consoleHeader.style.color = 'lime';
   consoleHeader.style.borderBottom = '1px solid lime';
   consoleHeader.style.paddingBottom = '5px';
   consoleHeader.style.marginBottom = '10px';
