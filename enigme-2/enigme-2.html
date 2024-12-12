@@ -33,15 +33,12 @@
             </div>
             <div id="response"></div> <!-- Zone pour afficher le résultat -->
 
-            <div class="explications">
-                <div id="image-container" style="display: none;">
-                    <img src="Gottfried_Wilhelm_von_Leibniz.jpg" alt="Photo de Gottfried Wilhelm"
-                        style="max-width: 300px; margin: 20px 0;">
+            <div class="connection-message">
+                <div id="connection-status" style="display: none;">
+                    <p id="connecting">Connexion en cours.</p>
                 </div>
-                <div id="explanation" style="display: none;">
-                    <p>Le système de numération binaire moderne, base du code binaire, a été développé par Gottfried
-                        Leibniz sur une période qui s'étend environ entre 1678 et 1703, date où paraît son article
-                        "Explication de l'Arithmétique Binaire".</p>
+                <div id="connection-established" style="display: none;">
+                    <p>Connexion établie. Vous pouvez vous connecter.</p>
                 </div>
             </div>
         </section>
@@ -66,8 +63,8 @@
         const form = document.getElementById("binary-form");
         const messageField = document.getElementById("message");
         const responseDiv = document.getElementById("response");
-        const imageDiv = document.getElementById("image-container");
-        const explanationDiv = document.getElementById("explanation");
+        const connectionStatusDiv = document.getElementById("connection-status");
+        const connectionEstablishedDiv = document.getElementById("connection-established");
         const binaryTextElement = document.getElementById("binary-text"); // Correctement ciblé
         const formElements = form.querySelectorAll("textarea, button");
 
@@ -141,6 +138,15 @@
         enableHintButton(hint2Button, hints[1], 2 * 60 * 1000); // 6 minutes
         enableHintButton(hint3Button, hints[2], 4 * 60 * 1000); // 8 minutes
 
+        // Fonction pour secouer le conteneur en cas de mauvaise réponse
+        function shakeContainer() {
+            const container = document.getElementById("contact");
+            container.classList.add("shake");
+            setTimeout(() => {
+                container.classList.remove("shake");
+            }, 1000); // La secousse dure 1 seconde
+        }
+
         // Événement de soumission du formulaire
         form.addEventListener("submit", function (event) {
             event.preventDefault(); // Empêche le rechargement de la page
@@ -155,26 +161,34 @@
                 form.style.display = "none";
                 binaryTextElement.style.display = "none";
 
-                imageDiv.style.display = "block";
-                explanationDiv.style.display = "block";
+                // Effet de "Connexion en cours..."
+                connectionStatusDiv.style.display = "block";
+                let dotCount = 1;
+                let dots = "";
+                let dotInterval = setInterval(function () {
+                    dots = ".".repeat(dotCount);
+                    document.getElementById("connecting").textContent = "Connexion en cours" + dots;
+                    dotCount = (dotCount % 3) + 1;
+                }, 500);
 
-                redirectButton.style.display = "block";
-                hintsContainer.style.display = "none";
+                // Après 3 secondes, arrêter l'effet et afficher "Connexion établie"
+                setTimeout(() => {
+                    clearInterval(dotInterval);
+                    connectionStatusDiv.style.display = "none";
+                    connectionEstablishedDiv.style.display = "block";
+                    redirectButton.style.display = "block";
+                    hintsContainer.style.display = "none";
+                }, 5000);
             } else {
                 responseDiv.textContent = "Mauvaise réponse. Infiltration du système principal échouée.";
                 responseDiv.style.color = "red";
                 responseDiv.style.fontSize = "20px";
 
-                // Ajouter l'effet de secousse sur le conteneur du formulaire
-                form.classList.add("shake");
+                // Appliquer l'effet de secousse
+                shakeContainer();
 
-                // Retirer l'animation après qu'elle soit terminée
-                setTimeout(() => {
-                    form.classList.remove("shake");
-                }, 500);
-
-                imageDiv.style.display = "none";
-                explanationDiv.style.display = "none";
+                connectionStatusDiv.style.display = "none";
+                connectionEstablishedDiv.style.display = "none";
             }
         });
     </script>
