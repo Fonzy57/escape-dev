@@ -1,0 +1,141 @@
+:root {
+  --font: "";
+}
+
+@font-face {
+  font-family: "Code";
+  src: url("Source_Code_Pro/static/SourceCodePro-SemiBold.ttf")
+    format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "code";
+}
+
+html {
+  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+}
+
+body {
+  position: relative;
+  /* overflow-y: hidden; */
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.345);
+  font-family: "code";
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 3;
+  padding: 0;
+}
+
+header nav {
+  height: auto;
+  border: 0;
+}
+
+header img {
+  width: 210px;
+}
+
+header nav a {
+  color: orangered;
+  text-decoration: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+}
+
+header nav a img {
+  width: 20px;
+  padding: 0;
+}
+
+header {
+  padding: 0;
+}
+
+main {
+  color: white;
+  width: 100%;
+}
+
+main #accueil,
+main .contexte {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main #accueil {
+  /* background: url("./images/background.jpg") center/cover; */
+  background: black;
+  position: absolute;
+  transition: 1s ease;
+  z-index: 2;
+}
+
+#accueil .wrapper {
+  width: 75%;
+  margin-left: 120px;
+}
+
+main .wrapper h1 {
+  font-size: 3rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  font-family: "code";
+}
+
+main #accueil.hidden {
+  transform: translateY(-100vh);
+}
+
+#accueil.display-none {
+  display: none;
+}
+
+main .contexte {
+  background: url(serveurs.png) center/cover;
+  position: absolute;
+  z-index: 1;
+  font-size: 1.3rem;
+}
+
+.contexte .wrapper {
+  width: 55%;
+  margin: auto;
+}
+
+.contexte p {
+  margin-bottom: 30px;
+}
+
+.contexte a {
+  width: 100%;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  border: 2px solid white;
+  margin: auto;
+  padding: 10px 20px;
+  display: none;
+  transition: 0.1s ease;
+}
+
+.contexte a.visible {
+  display: block;
+  text-align: center;
+}
+
+.contexte .wrapper a:hover {
+  color: rgb(70, 70, 70);
+  background-color: white;
+}

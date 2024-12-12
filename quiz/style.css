@@ -57,7 +57,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-p {
+.context p {
   line-height: 45px;
 }
 
@@ -157,4 +157,28 @@ p {
   background: rgba(0, 255, 0, 0.4);
   padding: 20px;
   border-radius: 10px;
+}
+
+.anim-wrong-answer {
+  animation: 1s linear wrongAnswer;
+}
+.anim-good-answer {
+  animation: 1s linear goodAnswer;
+}
+
+@keyframes wrongAnswer {
+  0% {
+    border: 2px solid red;
+  }
+  100% {
+    border: 2px solid var(--color-primary);
+  }
+}
+@keyframes goodAnswer {
+  0% {
+    border: 2px solid green;
+  }
+  100% {
+    border: 2px solid var(--color-primary);
+  }
 }

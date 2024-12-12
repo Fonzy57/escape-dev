@@ -1,3 +1,7 @@
+* {
+  font-family: monospace;
+}
+
 body {
   background-color: black;
 }
@@ -9,6 +13,13 @@ body {
 
 label {
   color: white;
+}
+
+#nav-connection-next {
+  text-decoration: none;
+  width: max-content;
+  display: flex;
+  margin: 0px auto;
 }
 
 #binary-form {
@@ -135,6 +146,7 @@ body {
   font-family: Arial, sans-serif;
   resize: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: monospace;
 }
 
 #binary-form button {
