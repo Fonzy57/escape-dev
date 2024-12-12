@@ -10,7 +10,7 @@ const columns = canvas.width / fontSize;
 
 const drops = Array(Math.floor(columns)).fill(1);
 
-function drawMatrix () {
+function drawMatrix() {
   ctx.fillStyle = "rgba(10, 10, 26, 0.4)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -18,9 +18,7 @@ function drawMatrix () {
   ctx.font = `${fontSize}px monospace`;
 
   for (let i = 0; i < drops.length; i++) {
-    const text = characters.charAt(
-      Math.floor(Math.random() * characters.length)
-    );
+    const text = characters.charAt(Math.floor(Math.random() * characters.length));
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
     if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
@@ -30,7 +28,7 @@ function drawMatrix () {
   }
 }
 
-function animateMatrix () {
+function animateMatrix() {
   drawMatrix();
   requestAnimationFrame(animateMatrix);
 }
@@ -39,12 +37,7 @@ function animateMatrix () {
 const questions = [
   {
     question: "Que signifie 'CSS' ?",
-    options: [
-      "Colorful Style Sheets",
-      "Cascading Style Sheets",
-      "Computer Style Sheets",
-      "Creative Style Sheets",
-    ],
+    options: ["Colorful Style Sheets", "Cascading Style Sheets", "Computer Style Sheets", "Creative Style Sheets"],
     correctAnswer: "Cascading Style Sheets",
   },
   {
@@ -69,13 +62,8 @@ const questions = [
   },
   {
     question: "UNE « CYBER ATTAQUE » C'EST :",
-    options: [
-      "Le titre du dernier Matrix",
-      "Le nom d’une compile d’électro",
-      "Une action malveillante en direction d’un système ou d’un réseau",
-    ],
-    correctAnswer:
-      "Une action malveillante en direction d’un système ou d’un réseau",
+    options: ["Le titre du dernier Matrix", "Le nom d’une compile d’électro", "Une action malveillante en direction d’un système ou d’un réseau"],
+    correctAnswer: "Une action malveillante en direction d’un système ou d’un réseau",
   },
   {
     question: "QU'EST-CE Q'UN RÉSEAU 'LAN' ?",
@@ -93,8 +81,7 @@ const questions = [
       "En l’équipant d’une housse de qualité",
       "En le mettant à jour régulièrement et en installant un anti-virus",
     ],
-    correctAnswer:
-      "En le mettant à jour régulièrement et en installant un anti-virus",
+    correctAnswer: "En le mettant à jour régulièrement et en installant un anti-virus",
   },
   {
     question: "COMMENT ACCEDÉR À LA PAGE 'CHOCOLAT' ?",
@@ -119,8 +106,7 @@ const questions = [
       "Un langage de programmation utilisé pour coder des logiciels",
       "Une base de données qui stocke des informations structurées",
     ],
-    correctAnswer:
-      "Suite d'étapes permettant d'obtenir un résultat à partir d'éléments fournis en entrée",
+    correctAnswer: "Suite d'étapes permettant d'obtenir un résultat à partir d'éléments fournis en entrée",
   },
   {
     question: "QUEL EST LE RÔLE DES SERVEURS 'DNS' ?",
@@ -143,6 +129,7 @@ const scoreTrackerElement = document.getElementById("score-tracker");
 const questionContainer = document.getElementById("question-container");
 const currentQuestionElement = document.getElementById("current-question");
 const optionsContainer = document.getElementById("options-container");
+const container = document.querySelector(".container");
 
 let currentQuestionIndex = 0;
 let timeLeft = 60;
@@ -153,14 +140,14 @@ let timerInterval;
 startButton.addEventListener("click", startQuiz);
 animateMatrix();
 
-function startQuiz () {
+function startQuiz() {
   introScreen.style.display = "none";
   quizScreen.style.display = "block";
   startTimer();
   displayQuestion();
 }
 
-function startTimer () {
+function startTimer() {
   timerInterval = setInterval(() => {
     timeLeft--;
     timerElement.textContent = `TEMPS RESTANT : ${timeLeft} SECONDES`;
@@ -171,7 +158,7 @@ function startTimer () {
   }, 1000);
 }
 
-function displayQuestion () {
+function displayQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
   currentQuestionElement.textContent = currentQuestion.question;
 
@@ -185,13 +172,22 @@ function displayQuestion () {
   });
 }
 
-function checkAnswer (selectedOption) {
+function checkAnswer(selectedOption) {
   const currentQuestion = questions[currentQuestionIndex];
 
   if (selectedOption === currentQuestion.correctAnswer) {
     correctAnswers++;
     corruptionLevel += 10;
     corruptionElement.textContent = `CORRUPTION DE L'IA : ${corruptionLevel}%`;
+    container.classList.add("anim-good-answer");
+    setTimeout(() => {
+      container.classList.remove("anim-good-answer");
+    }, 1000);
+  } else {
+    container.classList.add("anim-wrong-answer");
+    setTimeout(() => {
+      container.classList.remove("anim-wrong-answer");
+    }, 1000);
   }
 
   scoreTrackerElement.textContent = `SCORE : ${correctAnswers}/${questions.length}`;
@@ -204,7 +200,7 @@ function checkAnswer (selectedOption) {
   }
 }
 
-function endQuiz () {
+function endQuiz() {
   clearInterval(timerInterval);
 
   // Calcul du pourcentage de réponses correctes
@@ -218,17 +214,11 @@ function endQuiz () {
     // Écran de succès
     const successScreen = document.getElementById("success-screen");
     successScreen.style.display = "block";
-    document.getElementById(
-      "final-score"
-    ).textContent = `SCORE FINAL : ${correctAnswers}/${questions.length
-    } (${successPercentage.toFixed(0)}%)`;
+    document.getElementById("final-score").textContent = `SCORE FINAL : ${correctAnswers}/${questions.length} (${successPercentage.toFixed(0)}%)`;
   } else {
     // Écran d'échec
     const failureScreen = document.getElementById("failure-screen");
     failureScreen.style.display = "block";
-    document.getElementById(
-      "failure-score"
-    ).textContent = `SCORE : ${correctAnswers}/${questions.length
-    } (${successPercentage.toFixed(0)}%)`;
+    document.getElementById("failure-score").textContent = `SCORE : ${correctAnswers}/${questions.length} (${successPercentage.toFixed(0)}%)`;
   }
 }
