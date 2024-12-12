@@ -1,21 +1,23 @@
-body{
+body {
     background-color: black;
 }
 
-.binaire{
+.binaire {
     color: white;
     text-align: center;
 }
 
-label{
+label {
     color: white;
 }
 
-#binary-form{
+#binary-form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    transition: transform 0.5s ease;
+    /* Animation de transformation */
 }
 
 #response {
@@ -26,12 +28,12 @@ label{
     transition: all 0.7s ease;
 }
 
-#explanation p{
+#explanation p {
     color: white;
     font-size: 20px;
 }
 
-.explications{
+.explications {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,4 +168,31 @@ body {
 #binary-form {
     opacity: 0;
     transition: opacity 1s ease;
+}
+
+/* Animation de secousse */
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    75% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake {
+    animation: shake 0.5s ease;
 }
