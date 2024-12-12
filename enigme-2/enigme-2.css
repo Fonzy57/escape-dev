@@ -1,3 +1,7 @@
+*{
+    font-family: monospace;
+}
+
 body {
     background-color: black;
 }
@@ -132,7 +136,7 @@ body {
     border: 2px solid #007BFF;
     border-radius: 5px;
     font-size: 16px;
-    font-family: Arial, sans-serif;
+    font-family: monospace, sans-serif;
     resize: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
