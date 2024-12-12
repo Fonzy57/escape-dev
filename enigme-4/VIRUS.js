@@ -51,10 +51,12 @@ class EscapeGameBot {
                 "Un indice ? Non. Réfléchissez par vous-même."
             ],
             depit: [
-                "De toutes façon vous n'arriverez jamais à me désactiver.",
-                "Je suis trop puissante pour vous",
+                "Quoi ? Vous avez réussi ? Inattendu...",
+                "Même une horloge cassée a raison deux fois par jour.",
+                "Profitez bien de ce moment, ça n'arrivera pas souvent.",
+                "Ah, un coup de chance. Félicitations, je suppose.",
+                "Je dois recalculer, ce n'était pas censé arriver."
             ]
-            
         };
         this.previousMessageElement = null;
         this.intervalId = null;
@@ -147,12 +149,12 @@ class EscapeGameBot {
             case 'decrypt-error':
                 this.failureCount++;
                 
-                // Correction : Envoyer un message de moquerie lors d'une erreur de déchiffrement
+                // Envoie une moquerie ou un message d'erreur
                 const category = Math.random() > 0.5 ? 'mockery' : 'errors';
                 await this.sendMessage(category);
                 break;
             case 'decrypt-success':
-                this.failureCount = 0;
+                // Envoie un message de dépit
                 await this.sendMessage('depit');
                 break;
             default:
@@ -200,15 +202,18 @@ function initializeEscapeGameBot() {
     // Événement de déchiffrement
     const decryptButton = document.getElementById('btn-dechiffrer');
     decryptButton.addEventListener('click', async () => {
-        const key = document.getElementById('cle').value;
+        const key = parseInt(document.getElementById('cle').value); // Convertir en entier
         const decryptedText = document.getElementById('text-dechiffre').textContent;
         
-        if (decryptedText === 'Veuillez entrer une clé.' || 
-            decryptedText === 'Clé invalide. Entrez un nombre entre 0 et 25.' || key.value !== 9) {
+        if (isNaN(key) || key < 0 || key > 25) {
+            // Clé invalide
             await escapeBot.react('decrypt-error');
-        } else {
-            decryptedText === 'lesbananescestlavie'
+        } else if (decryptedText === 'lesbananescestlavie' && key === 9) {
+            // Succès
             await escapeBot.react('decrypt-success');
+        } else {
+            // Toute autre erreur
+            await escapeBot.react('decrypt-error');
         }
     });
 }

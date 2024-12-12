@@ -44,6 +44,7 @@ document.getElementById('btn-dechiffrer').addEventListener('click', () => {
     document.dispatchEvent(new CustomEvent('decrypt-success'));
     if (texteDechiffre === 'lesbananescestlavie'){
         document.getElementById('redirect').style.display = '';
+        
     }
 });
 
