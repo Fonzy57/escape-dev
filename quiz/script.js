@@ -48,7 +48,7 @@ const questions = [
     correctAnswer: "Cascading Style Sheets",
   },
   {
-    question: "QU'EST-QU'UN BON MOT DE PASS ?",
+    question: "QU'EST-QU'UN BON MOT DE PASSE ?",
     options: [
       "Le même que celui de ta moitié : moins de chance de l’oublier",
       "Un mot facile à retenir, comme « motdepasse »",

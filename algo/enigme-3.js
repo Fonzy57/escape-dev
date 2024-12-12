@@ -7,16 +7,27 @@ document.getElementById("enigme-form1").addEventListener("submit", function (eve
     const resultDiv = document.getElementById("result");
 
     if (userAnswer === correctAnswer) {
-        resultDiv.style.color = "green";
-        resultDiv.textContent = "Correct ! La réponse est 'Mineur'";
-        document.getElementById("container1").style.display = "none";
-        document.getElementById("container2").style.display = "block";
-        document.getElementById("answer2").focus();
+
+        // Transition entre container1 et container2
+        document.getElementById("container1").style.opacity = 0; // Début du fondu
+        setTimeout(function () {
+            document.getElementById("container1").style.visibility = "hidden"; // Cacher le container1 après le fondu
+            document.getElementById("container2").style.visibility = "visible"; // Afficher container2
+            document.getElementById("container2").style.opacity = 1; // Fin du fondu
+        }, 500); // Réduit le délai à 500ms
+
+        // Utilisation de l'événement transitionend pour appliquer le focus après la transition
+        document.getElementById("container2").addEventListener("transitionend", function () {
+            document.getElementById("answer2").focus();
+        }, { once: true }); // S'assure que l'événement est déclenché une seule fois
     } else {
         resultDiv.style.color = "red";
         resultDiv.textContent = "Faux ! Réessayez.";
     }
 });
+
+
+
 
 document.getElementById("enigme-form2").addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche la soumission du formulaire
@@ -27,7 +38,7 @@ document.getElementById("enigme-form2").addEventListener("submit", function (eve
     const resultDiv = document.getElementById("result2");
 
     if (userAnswer === correctAnswer) {
-        resultDiv.textContent = "";
+        resultDiv.textContent = ""
 
         // Affiche le bouton "Passer à l'étape suivante"
         const goNextButton = document.getElementById("goNext");
@@ -44,6 +55,7 @@ document.getElementById("enigme-form2").addEventListener("submit", function (eve
     }
 });
 
-function goNext () {
-    window.location.href = "../the-end/index.html"; // Redirige vers l'énigme suivante
+function goNext() {
+    window.location.href = "/enigme-4"; // Redirige vers l'énigme suivante
 }
+
