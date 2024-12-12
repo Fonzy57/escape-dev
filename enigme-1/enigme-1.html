@@ -5,24 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="enigme-1.css" />
     <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <title>Enigme 1</title>
   </head>
 
   <body class="enigme-1">
-    <h1>L'URL de la prochaine énigme est cachée ci-dessous 👇</h1>
-    <div class="body-enigme-1">
-      <div class="dot-container">
-        <span id="piscine-mot1" class="piscine-mot">La</span>
-        <span id="piscine-mot2" class="piscine-mot">Super</span>
-        <span id="piscine-mot3" class="piscine-mot">Page</span>
-      </div>
-    </div>
-    <div class="reveal-container">
-      <p>L'URL à découvrir :</p>
+    <!-- <div id="title">
+      L'URL de la prochaine énigme est cachée ci-dessous
+      <h1>👇</h1>
+    </div> -->
+    <div id="dot-container"></div>
+    <div id="reveal-container">
+      <input type="text" id="solution" />
+      <span><i class="fa-solid fa-arrow-right"></i></span>
       <p>
-        <span id="reveal-mot1" class="reaveal inactive">la</span>-<span id="reveal-mot2" class="reaveal">page</span>-<span id="reveal-mot3" class="reaveal"
-          >suivante</span
-        >.html
+        https://www.notre-super-serveur/
+        <span id="reveal-mot1" class="reveal"></span>
+        -
+        <span id="reveal-mot2" class="reveal"></span>
+        -
+        <span id="reveal-mot3" class="reveal"></span>
+        .html
       </p>
     </div>
     <script src="enigme-1.js"></script>
