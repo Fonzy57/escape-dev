@@ -28,6 +28,16 @@
   margin-bottom: 40px;
   margin: 0;
 }
+#solution {
+  font-size: 2rem;
+  color: black;
+  padding: 5px 10px;
+  border: 3px solid rgb(0, 0, 0);
+  outline: none;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+}
 
 #reveal-container {
   margin: 0 auto;
@@ -37,14 +47,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-}
-
-#solution {
-  font-size: 2rem;
-  color: black;
-  padding: 5px 10px;
-  border: 3px solid rgb(0, 0, 0);
-  outline: none;
 }
 
 #reveal-container p {
@@ -58,15 +60,6 @@
   display: inline-block;
   text-align: center;
 }
-
-/* .body-enigme-1 {
-  overflow: hidden;
-  margin: 0;
-  height: 85vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 #dot-container {
   position: relative;
@@ -100,13 +93,13 @@
 }
 
 .c1 {
-  background-color: red;
+  background: radial-gradient(circle at 15px 15px, rgb(243, 118, 118) 2%, red 40%);
 }
 .c2 {
-  background-color: #ec6834;
+  background: radial-gradient(circle at 15px 15px, #da9e87 2%, #ec6834 40%);
 }
 .c3 {
-  background-color: #eca834;
+  background: radial-gradient(circle at 15px 15px, #e7bf7b 2%, #eca834 40%);
 }
 
 .piscine-mot {

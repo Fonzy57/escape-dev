@@ -2,24 +2,24 @@
 const piscine = document.getElementById("dot-container");
 function wordGen() {
   piscine.innerHTML += `
-        <span id="piscine-mot1" class="piscine-mot">La</span>
-        <span id="piscine-mot2" class="piscine-mot">Page</span>
-        <span id="piscine-mot3" class="piscine-mot">Suivante</span>
+        <span id="piscine-mot1" class="piscine-mot">la</span>
+        <span id="piscine-mot2" class="piscine-mot">page</span>
+        <span id="piscine-mot3" class="piscine-mot">suivante</span>
 `;
 }
 wordGen();
 
 //  DEFINIT LE NOMBRE DE POINT ------------------------------
 function DotGen() {
-  const Dot = document.createElement("span");
   ran = Math.floor(Math.random() * 3) + 1;
+  const Dot = document.createElement("span");
   Dot.classList.add("dot");
   Dot.classList.add(`c${ran}`);
   piscine.appendChild(Dot);
 }
-// ON MODIFIE ICI LA FREQUENCE DE POINTS EN AXE X ET Y
-dotNumbXcap = 40;
-dotNumbYcap = 20;
+// ON MODIFIE ICI LE NOMBRE DE POINTS EN AXE X ET Y
+let dotNumbXcap = Math.round(piscine.clientWidth / 48);
+let dotNumbYcap = Math.round(piscine.clientHeight / 41);
 
 for (DotNumbY = 0; DotNumbY < dotNumbYcap; DotNumbY++) {
   DotGen();
@@ -43,12 +43,12 @@ for (DotNumbY = 0; DotNumbY < dotNumbYcap; DotNumbY++) {
 
 // DEFINIT LA POSITION DE CHAQUE POINTS ---------------------------------------
 const DotContainer = document.getElementById("dot-container");
-const Dots = DotContainer.querySelectorAll(".dot");
+let Dots = DotContainer.querySelectorAll(".dot");
 
-dotDistX = window.innerWidth / dotNumbXcap;
-dotDistY = window.innerHeight / dotNumbYcap;
-NumberY = 0;
-NumberX = 0;
+let dotDistX = window.innerWidth / dotNumbXcap;
+let dotDistY = window.innerHeight / dotNumbYcap;
+let NumberY = 0;
+let NumberX = 0;
 function scalePool() {
   Dots.forEach((dot) => {
     if (NumberX <= dotNumbXcap) {
@@ -73,16 +73,29 @@ function scalePool() {
 }
 scalePool();
 
-// let windowsWidth = window.innerWidth;
-// setInterval(() => {
-//   if (window.innerWidth != windowsWidth) {
-//     DotContainer.innerHTML = "";
-//     wordGen();
-//     DotGen();
-//     scalePool();
-//     windowsWidth = window.innerWidth;
-//   }
-// }, 1000);
+let windowsWidth = window.innerWidth;
+window.addEventListener("resize", () => {
+  if (window.innerWidth != windowsWidth) {
+    DotContainer.innerHTML = "";
+    wordGen();
+    dotNumbXcap = Math.round(piscine.clientWidth / 48);
+    dotNumbYcap = Math.round(piscine.clientHeight / 41);
+    dotDistX = window.innerWidth / dotNumbXcap;
+    dotDistY = window.innerHeight / dotNumbYcap;
+    NumberY = 0;
+    NumberX = 0;
+
+    for (DotNumbY = 0; DotNumbY < dotNumbYcap; DotNumbY++) {
+      DotGen();
+      for (DotNumbX = 0; DotNumbX < dotNumbXcap; DotNumbX++) {
+        DotGen();
+      }
+    }
+    Dots = DotContainer.querySelectorAll(".dot");
+    scalePool();
+    windowsWidth = window.innerWidth;
+  }
+});
 
 // DEFINIT LE COMPORTEMENT DE CHAQUE POINTS A LA SOURIS -------------------------------
 let animationFrameId;
@@ -97,15 +110,14 @@ DotContainer.addEventListener("mousemove", (e) => {
         const dotPosLocY = dot.getBoundingClientRect().y + 40;
         const deltaX = mouseX - dotPosLocX;
         const deltaY = mouseY - dotPosLocY;
+        let maxDistance = 100;
 
         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-        // ON MODIFIE ICI LA LARGEUR DU HALO DE POINTS
-        let maxDistance = 60;
-
+        // ON MODIFIE ICI LA LARGEUR DU HALO DE SOURIS
         if (window.innerWidth > 1920) {
-          maxDistance = 60 * (window.innerWidth / 1800);
+          maxDistance = 100 * (window.innerWidth / 1800);
         } else {
-          maxDistance = 60;
+          maxDistance = 100;
         }
 
         if (distance < maxDistance) {
@@ -142,5 +154,3 @@ solutionInput.addEventListener("input", () => {
     revealMot3.innerHTML = "suivante";
   }
 });
-
-// MOUVEMENTS DE LA LOUPE ---------------------------------------------------
