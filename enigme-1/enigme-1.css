@@ -28,16 +28,6 @@
   margin-bottom: 40px;
   margin: 0;
 }
-#solution {
-  font-size: 2rem;
-  color: black;
-  padding: 5px 10px;
-  border: 3px solid rgb(0, 0, 0);
-  outline: none;
-  position: relative;
-  text-align: center;
-  border-radius: 10px;
-}
 
 #reveal-container {
   margin: 0 auto;
@@ -48,9 +38,34 @@
   justify-content: space-evenly;
   align-items: center;
 }
+@media screen and (max-width: 1700px) {
+  #reveal-container {
+    width: 100%;
+  }
+}
 
 #reveal-container p {
   margin: 0;
+}
+
+#solution {
+  font-size: 2rem;
+  color: black;
+  padding: 5px 10px;
+  border: 3px solid rgb(0, 0, 0);
+  outline: none;
+  position: relative;
+  text-align: center;
+  border-radius: 10px;
+}
+@media screen and (max-width: 1400px) {
+  #solution {
+    width: 10%;
+  }
+}
+
+#text-reveal {
+  text-align: center;
 }
 
 .reveal {
