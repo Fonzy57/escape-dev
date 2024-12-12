@@ -14,8 +14,7 @@
         <source src="background-video.mp4" type="video/mp4">
     </video>
 
-    <h2 id="binary-text" class="binaire">01000111 01101111 01110100 01110100 01100110 01110010 01101001 01100101
-        01100100 00100000 01001100 01100101 01101001 01100010 01101110 01101001 01111010</h2>
+    <h2 id="binary-text" class="binaire"></h2> <!-- Vide pour l'animation -->
 
     <main>
         <section id="contact">
@@ -32,7 +31,7 @@
                     </div>
                 </form>
             </div>
-            <div id="response"></div> <!-- Zone pour afficher le résultat -->   
+            <div id="response"></div> <!-- Zone pour afficher le résultat -->
 
             <div class="explications">
                 <div id="image-container" style="display: none;">
@@ -69,15 +68,45 @@
         const responseDiv = document.getElementById("response");
         const imageDiv = document.getElementById("image-container");
         const explanationDiv = document.getElementById("explanation");
-        const binaryText = document.getElementById("binary-text");
+        const binaryTextElement = document.getElementById("binary-text"); // Correctement ciblé
+        const formElements = form.querySelectorAll("textarea, button");
+
+        // Texte binaire à écrire progressivement
+        const binaryText = "01000111 01101111 01110100 01110100 01100110 01110010 01101001 01100101 01100100 00100000 01001100 01100101 01101001 01100010 01101110 01101001 01111010";
+
+        // Initialiser le formulaire masqué
+        form.style.opacity = "0";
+        form.style.transition = "opacity 1s ease";
+
+        // Variables pour l'effet d'écriture
+        let index = 0;
+
+        // Fonction pour afficher le texte binaire progressivement
+        function typeBinaryText() {
+            if (index < binaryText.length) {
+                binaryTextElement.textContent += binaryText[index]; // Ajouter caractère par caractère
+                index++;
+                setTimeout(typeBinaryText, 50); // Vitesse de l'animation
+            } else {
+                // Une fois terminé, faire apparaître le formulaire
+                setTimeout(() => {
+                    form.style.opacity = "1"; // Transition d'apparition
+                }, 500);
+            }
+        }
+
+        // Lancer l'animation d'écriture au chargement de la page
+        document.addEventListener("DOMContentLoaded", () => {
+            typeBinaryText();
+        });
 
         // Permettre l'envoi avec la touche "Entrée" dans le textarea
-            messageField.addEventListener("keydown", function (event) {
-                if (event.key === "Enter") {
-                    event.preventDefault(); // Empêche l'ajout d'un saut de ligne
-                    form.dispatchEvent(new Event("submit")); // Déclenche la soumission du formulaire
-                }
-            });
+        messageField.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Empêche l'ajout d'un saut de ligne
+                form.dispatchEvent(new Event("submit")); // Déclenche la soumission du formulaire
+            }
+        });
 
         // Conteneur des indices
         const hint1Button = document.getElementById("hint1");
@@ -119,33 +148,25 @@
             const userAnswer = messageField.value.trim(); // Récupère et nettoie la réponse
 
             if (userAnswer === correctAnswer) {
-                // Réponse correcte
                 responseDiv.textContent = "Infiltration du système principal réussie.";
                 responseDiv.style.color = "green";
-                responseDiv.style.fontSize = "35px"; // Agrandit le texte
+                responseDiv.style.fontSize = "35px";
 
-                // Masque le formulaire et le texte binaire
-                form.style.display = "none"; // Cache le formulaire
-                binaryText.style.display = "none"; // Cache le texte binaire
+                form.style.display = "none";
+                binaryTextElement.style.display = "none";
 
-                // Affiche l'image et le texte explicatif
-                imageDiv.style.display = "block"; // Rend la div visible
-                explanationDiv.style.display = "block"; // Rend le texte explicatif visible
+                imageDiv.style.display = "block";
+                explanationDiv.style.display = "block";
 
-                // Affiche le bouton de redirection
-                redirectButton.style.display = "block"; // Affiche le bouton de redirection
-
-                // Cache les boutons d'indices
-                hintsContainer.style.display = "none"; // Cache les boutons d'indices
+                redirectButton.style.display = "block";
+                hintsContainer.style.display = "none";
             } else {
-                // Réponse incorrecte
                 responseDiv.textContent = "Mauvaise réponse. Infiltration du système principal échouée.";
                 responseDiv.style.color = "red";
-                responseDiv.style.fontSize = "20px"; // Agrandit légèrement pour les erreurs
+                responseDiv.style.fontSize = "20px";
 
-                // Masque l'image et le texte explicatif si la réponse est incorrecte
-                imageDiv.style.display = "none"; // Cache la div de l'image
-                explanationDiv.style.display = "none"; // Cache le texte explicatif
+                imageDiv.style.display = "none";
+                explanationDiv.style.display = "none";
             }
         });
     </script>
