@@ -60,7 +60,7 @@
 
     <script>
         // Traduction correcte
-        const correctAnswer = "Gottfried Leibniz";
+        const correctAnswer = "172.16.248.2";
 
         // Formulaire et éléments
         const form = document.getElementById("binary-form");
@@ -72,7 +72,7 @@
         const formElements = form.querySelectorAll("textarea, button");
 
         // Texte binaire à écrire progressivement
-        const binaryText = "01000111 01101111 01110100 01110100 01100110 01110010 01101001 01100101 01100100 00100000 01001100 01100101 01101001 01100010 01101110 01101001 01111010";
+        const binaryText = "10101100.10000.11111000.10";
 
         // Initialiser le formulaire masqué
         form.style.opacity = "0";
@@ -119,9 +119,9 @@
 
         // Messages d'indice
         const hints = [
-            "Indice 1 : Un nombre rempli de 0 et de 1 rappelle forcément un nombre binaire.",
-            "Indice 2 : Un nombre binaire peut être traduit en texte.",
-            "Indice 3 : Pour traduire le nombre binaire, vous pouvez vous rendre à cette adresse : https://usefulwebtool.com/fr/convertir-texte-en-binaire"
+            "Indice 1 : Un nombre rempli de 0 et de 1 rappelle forcément un nombre binaire. Peut-être un lien vers l'adresse IP du réseau ?",
+            "Indice 2 : Un nombre binaire peut être traduit en décimal.",
+            "Indice 3 : Il faut bien traduire chaque nombre avant un point comme un décimal unique."
         ];
 
         // Fonction pour activer un bouton après un délai
@@ -137,9 +137,9 @@
         }
 
         // Activer les boutons avec un délai spécifique
-        enableHintButton(hint1Button, hints[0], 3 * 60 * 1000); // 3 minutes
-        enableHintButton(hint2Button, hints[1], 6 * 60 * 1000); // 6 minutes
-        enableHintButton(hint3Button, hints[2], 8 * 60 * 1000); // 8 minutes
+        enableHintButton(hint1Button, hints[0], 1 * 60 * 1000); // 3 minutes
+        enableHintButton(hint2Button, hints[1], 2 * 60 * 1000); // 6 minutes
+        enableHintButton(hint3Button, hints[2], 4 * 60 * 1000); // 8 minutes
 
         // Événement de soumission du formulaire
         form.addEventListener("submit", function (event) {
@@ -164,6 +164,14 @@
                 responseDiv.textContent = "Mauvaise réponse. Infiltration du système principal échouée.";
                 responseDiv.style.color = "red";
                 responseDiv.style.fontSize = "20px";
+
+                // Ajouter l'effet de secousse sur le conteneur du formulaire
+                form.classList.add("shake");
+
+                // Retirer l'animation après qu'elle soit terminée
+                setTimeout(() => {
+                    form.classList.remove("shake");
+                }, 500);
 
                 imageDiv.style.display = "none";
                 explanationDiv.style.display = "none";
