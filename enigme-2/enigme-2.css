@@ -162,3 +162,8 @@ body {
     background-color: #888;
     cursor: not-allowed;
 }
+
+#binary-form {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
