@@ -68,7 +68,7 @@
   position: relative;
   box-shadow: 0 0 20px 0 black;
   background-color: #313d73;
-  cursor: none;
+  cursor: crosshair;
 }
 
 .dot {
