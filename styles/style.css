@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "Code";
-  src: url("Source_Code_Pro/static/SourceCodePro-SemiBold.ttf")
+  src: url("../fonts/SourceCodePro-SemiBold.ttf")
     format("truetype");
 }
 
@@ -77,7 +77,7 @@ main .contexte {
 }
 
 main #accueil {
-  background: url(../bg-accueil.JPG) center/cover;
+  background: url(../images/bg-accueil.JPG) center/cover;
   position: absolute;
   transition: 1s ease;
   z-index: 2;
@@ -107,7 +107,7 @@ main #accueil.hidden {
 }
 
 main .contexte {
-  background: url(../bg-serveurs2.jpeg) center/cover;
+  background: url(../images/bg-serveurs2.jpeg) center/cover;
   position: absolute;
   z-index: 1;
   font-size: 1.3rem;
@@ -123,6 +123,7 @@ main .contexte {
   margin-right: 0;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   width: 100%;
+  font-size: 25px;
 }
 
 .contexte a {
@@ -131,9 +132,10 @@ main .contexte {
   text-transform: uppercase;
   color: white;
   border: 2px solid white;
-  margin: auto;
+  margin: 60px 0;
   padding: 10px 0;
   display: none;
+
   transition: 0.1s ease;
 }
 
