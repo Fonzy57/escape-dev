@@ -1,8 +1,8 @@
 document.getElementById("enigme-form1").addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche la soumission du formulaire
 
-    const userAnswer = document.getElementById("answer1").value.trim().toLowerCase();
-    const correctAnswer = "code modifiable";
+    const userAnswer = document.getElementById("answer1").value.replaceAll(" ", "").toLowerCase();
+    const correctAnswer = "codemodifiable";
 
     const resultDiv = document.getElementById("result");
 
@@ -30,8 +30,8 @@ document.getElementById("enigme-form1").addEventListener("submit", function (eve
 document.getElementById("enigme-form2").addEventListener("submit", function (event) {
     event.preventDefault(); // Empêche la soumission du formulaire
 
-    const userAnswer = document.getElementById("answer2").value.trim().toLowerCase();
-    const correctAnswer = "variable = vrai"; // La somme des nombres de 1 à 11 sauf 9
+    const userAnswer = document.getElementById("answer2").value.replaceAll(" ", "").toLowerCase();
+    const correctAnswer = "variable=vrai"; // La somme des nombres de 1 à 11 sauf 9
 
     const resultDiv = document.getElementById("result2");
 
